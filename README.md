@@ -22,4 +22,4 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Video
 
-<video><iframe width="560" height="315" src="https://www.youtube.com/embed/xgCnDGGwKLY" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></video>
+[![TITLE]](https://www.youtube.com/embed/xgCnDGGwKLY)
