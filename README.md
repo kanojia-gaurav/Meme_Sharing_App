@@ -18,4 +18,4 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Images
 
-![](1.jpeg)
+<img src="1.jpeg" height="500">
