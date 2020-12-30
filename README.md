@@ -22,4 +22,4 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Video
 
-[![Drowsiness Detection]Click here](https://www.youtube.com/embed/xgCnDGGwKLY)
+Click here: (https://www.youtube.com/embed/xgCnDGGwKLY)
