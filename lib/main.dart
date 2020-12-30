@@ -1,8 +1,9 @@
 import 'dart:convert';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_share/flutter_share.dart';
+import 'package:image_picker_saver/image_picker_saver.dart';
 
 
 void main() {
@@ -31,8 +32,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   var jsonbody;
+
   memeapi(){  
-  get("https://meme-api.herokuapp.com/gimme").then((value) {
+  http.get("https://meme-api.herokuapp.com/gimme").then((value) {
      var res = jsonDecode(value.body);
      setState(() {
        jsonbody = res;
@@ -48,6 +50,14 @@ class _HomeState extends State<Home> {
       chooserTitle: 'Share'
     );
   }
+
+   void _download() async{
+
+     var response = await http.get(jsonbody['url']);
+     var filePath = await ImagePickerSaver.saveFile(fileData: response.bodyBytes);
+     print(filePath);
+   }
+
   @override
   Widget build(BuildContext context) {
 
@@ -65,13 +75,16 @@ class _HomeState extends State<Home> {
             Container(
               width: MediaQuery.of(context).size.width,
               height: 400,
-              child: jsonbody == null ? Container() : jsonbody['url'] == "" ? Container():  Image.network(jsonbody['url'], loadingBuilder: (context, child, progress) {return progress==null ? child : 
-              SpinKitCubeGrid(
-                color: Colors.black,
-                size: 50.0,
-              );
-              
+              child: jsonbody == null ? Container() : jsonbody['url'] == "" ? Container():  GestureDetector(
+                onTap: _download,
+                child: Image.network(jsonbody['url'], loadingBuilder: (context, child, progress) {return progress==null ? child : 
+                SpinKitCubeGrid(
+                  color: Colors.black,
+                  size: 50.0,
+                );
+                
             },),
+              ),
               ),
             SizedBox(height:20), 
            Row(
